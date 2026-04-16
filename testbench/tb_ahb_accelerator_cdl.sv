@@ -32,7 +32,7 @@ module tb_ahb_accelerator_cdl ();
     end
     endtask
 
-    ahb_accelerator_cdl #() DUT (.*);
+    bias_adder_cdl #() DUT (.*);
 
     initial begin
         n_rst = 1;
