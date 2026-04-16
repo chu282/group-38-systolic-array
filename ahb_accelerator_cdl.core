@@ -1,5 +1,5 @@
 CAPI=2:
-name: "u337mg051:ece337:ahb_accelerator_cdl:1.0.0"
+name: "group38:ece337:ahb_accelerator_cdl:1.0.0"
 description: ""
 
 filesets:
@@ -7,13 +7,19 @@ filesets:
         files:
             - "source/ahb_accelerator_cdl.sv"
         file_type: systemVerilogSource
-        # depend:
-        #     - "fusesoc:core:name"
+        depend:
+            - "group38:ece337:activation_cdl:1.0.0"
+            - "group38:ece337:ahb_subordinate_cdl:1.0.0"
+            - "group38:ece337:bias_adder_cdl:1.0.0"
+            - "group38:ece337:controller_cdl:1.0.0"
+            - "group38:ece337:systolic_array_cdl:1.0.0"
+            - "ece337:course-lib:sram1024x32_wrapper:1.0.0"
+            - "ece337:course-lib:ahb_model_updated"
 
     synth:
         depend:
             - "ece337:tech:AMI_05_LIB"
-            - "u337mg051:ece337:ahb_accelerator_cdl_syn"
+            - "group38:ece337:ahb_accelerator_cdl_syn"
 
     tb:
         files:
@@ -23,14 +29,14 @@ filesets:
             # - "data/file.txt": { file_type: user }
         file_type: systemVerilogSource
         depend:
-            - "u337mg051:ece337:questafiles"
+            - "group38:ece337:questafiles"
 
     synfiles:
         files:
             - "scripts/syn_ahb_accelerator_cdl.tcl"
         file_type: tclSource
         depend:
-            - "u337mg051:ece337:synfiles"
+            - "group38:ece337:synfiles"
 
 targets:
     default: &default
@@ -86,7 +92,7 @@ targets:
         toplevel: ahb_accelerator_cdl
         tools:
             design_compiler:
-                script_dir: "src/u337mg051_ece337_synfiles_0"
+                script_dir: "src/group38_ece337_synfiles_0"
                 dc_script: "synth.tcl"
                 report_dir: "reports"
                 target_library: "/home/ecegrid/a/ece337/summer24-refactor/tech/ami05/osu05_stdcells.db"
